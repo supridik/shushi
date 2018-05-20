@@ -22,6 +22,7 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('loginuser');
 	}
+	
 	public function login()
 	{
 		$this->load->view('login');
@@ -55,9 +56,41 @@ class Welcome extends CI_Controller {
 		}
 	}
 	
+	function masukadmin(){
+
+		$username = $this->input->post('username');
+		$password = $this->input->post('password');
+	
+		
+		$cek3=$this->Mo_database->cek3($username,$password)->num_rows();
+		
+		if($cek3 > 0){
+ 
+			$data_session = array(
+				'nama' => $username,
+				'status' => "login"
+				);
+ 
+			$this->session->set_userdata($data_session);
+
+			redirect(base_url().'index.php/home/admin');
+			
+		}
+		else{
+
+			
+			redirect(base_url().'index.php/welcome/login');
+
+		}
+	}
+	
 	function keluar(){
 		$this->session->sess_destroy();
 		redirect(base_url());
-	}
+	}	
 	
+	function keluaradmin(){
+		$this->session->sess_destroy();
+		redirect(base_url().'index.php/welcome/login');
+	}	
 }

@@ -44,7 +44,7 @@
 
 	<section class="contact " >
 		<div class="container">
-	        <form class="row  login" method="POST" action="<?php echo site_url('Co_login/masukadmin');?>">
+	        <form class="row  login" method="POST" action="<?php echo site_url('welcome/masukadmin');?>">
                 <h3 class="section-title black">Login Admin</h3>
                 <div class="row">
                 	<div class="col-md-4 col-xs-4">
